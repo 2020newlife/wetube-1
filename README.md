@@ -6,3 +6,17 @@
 
 백엔드 : nodejs, expressjs  
 프론트엔드 : 기본 javascript  
+middleware : morgan, helmet, cookie parser, body parser  
+view engine : pug
+
+#Pages:
+
+- [ ] Home
+- [x] Join
+- [x] Login
+- [x] Search
+- [ ] User Detail
+- [ ] Change Password
+- [ ] Upload
+- [ ] Video Detail
+- [ ] Edit Video
