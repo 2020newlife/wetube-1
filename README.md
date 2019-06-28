@@ -16,7 +16,7 @@ view engine : pug
 - [x] Login
 - [x] Search
 - [ ] User Detail
-- [ ] Change Password
-- [ ] Upload
+- [x] Change Password
+- [x] Upload
 - [ ] Video Detail
-- [ ] Edit Video
+- [x] Edit Video

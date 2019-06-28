@@ -1,5 +1,7 @@
+import { videos } from "../db";
 //user
-export const home = (req, res) => res.render("home", { pageTitle: "Root" });
+export const home = (req, res) =>
+  res.render("home", { pageTitle: "Root", videos });
 export const search = (req, res) => {
   // Es5
   //const searchingBy = req.query.searchWrd;
