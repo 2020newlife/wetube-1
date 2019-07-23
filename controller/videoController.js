@@ -1,10 +1,10 @@
 import routes from "../routes";
 import Video from "../models/Video";
-//user
-//DB에서 데이터를 가져오는 동안 JS는 다음줄을 처리해 버리는 일이 일어날 수 있다.
-//DB의 데이터를 가져오고 나서 페이지를 호출하기 위해 async로 싱크를 맞춰준다.
+// user
+// DB에서 데이터를 가져오는 동안 JS는 다음줄을 처리해 버리는 일이 일어날 수 있다.
+// DB의 데이터를 가져오고 나서 페이지를 호출하기 위해 async로 싱크를 맞춰준다.
 export const home = async (req, res) => {
-  //try catch는 Java처럼 에러 처리를 위해 사용한다. DB와의 접속에서 에러가 발생할 수 있기 때문에 예외처리를 한다.
+  // try catch는 Java처럼 에러 처리를 위해 사용한다. DB와의 접속에서 에러가 발생할 수 있기 때문에 예외처리를 한다.
   try {
     // await는 DB에서 데이터를 가져오는 동안 대기하고 있으라는 명령어 async가 존재할 때만 사용가능
     // find({})는 DB에 있는 모든 비디오를 가져온다.
@@ -18,7 +18,7 @@ export const home = async (req, res) => {
 };
 export const search = async (req, res) => {
   // Es5
-  //const searchingBy = req.query.searchWrd;
+  // const searchingBy = req.query.searchWrd;
   // Es6
   const {
     query: { searchWrd: searchingBy }
@@ -36,11 +36,11 @@ export const search = async (req, res) => {
   res.render("video/search", { pageTitle: "Search", searchingBy, videos });
 };
 
-//video
-export const video_getUpload = (req, res) => {
+// video
+export const videoGetUpload = (req, res) => {
   res.render("video/video_upload", { pageTitle: "Upload" });
 };
-export const video_postUpload = async (req, res) => {
+export const videoPostUpload = async (req, res) => {
   const {
     body: { title, description },
     file: { path }
@@ -53,7 +53,7 @@ export const video_postUpload = async (req, res) => {
   console.log(newVideo);
   res.redirect(routes.videos_detail(newVideo.id));
 };
-export const video_detail = async (req, res) => {
+export const videoDetail = async (req, res) => {
   const {
     params: { id }
   } = req;
@@ -67,7 +67,7 @@ export const video_detail = async (req, res) => {
     res.redirect(routes.home);
   }
 };
-export const getEdit_video = async (req, res) => {
+export const getEditVideo = async (req, res) => {
   const {
     params: { id }
   } = req;
@@ -78,7 +78,7 @@ export const getEdit_video = async (req, res) => {
     res.redirect(routes.home);
   }
 };
-export const postEdit_video = async (req, res) => {
+export const postEditVideo = async (req, res) => {
   const {
     params: { id },
     body: { title, description }
@@ -92,12 +92,14 @@ export const postEdit_video = async (req, res) => {
     res.redirect(routes.home);
   }
 };
-export const delete_video = async (req, res) => {
+export const deleteVideo = async (req, res) => {
   const {
     params: { id }
   } = req;
   try {
     await Video.findOneAndRemove({ _id: id });
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
   res.redirect(routes.home);
 };
