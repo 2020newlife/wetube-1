@@ -1,10 +1,10 @@
 header.header
     .header_column
         a(href=routes.home)
-            i.fab.fa-youtube
+            i.fab.fa-google-play &nbsp;&nbsp;WETUBE
     .header_column
         form.frm(action=routes.search, method="get")
-            input(type="text", placeholder="검색어를 입력해주세요.", name="searchWrd")
+            input(type="text", placeholder="검색", name="searchWrd")
     .header_column
         ul
             if !user.isAuthenticated
